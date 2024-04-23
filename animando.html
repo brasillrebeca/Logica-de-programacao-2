@@ -1,0 +1,39 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    pincel.fillStyle = 'lightgrey';
+    pincel.fillRect(0, 0, 600, 400);
+
+    function desenhaCirculo(x, y, raio) {
+        pincel.fillStyle = 'blue';
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+
+    function limpaTela() {
+
+        pincel.clearRect(0, 0, 600, 400);
+    }
+
+    // para criar a "ilusão de movimento" - criar uma função que execute outra de tempos em tempos
+    // método para controlar leitura da função: setInterval - configuro ela: inserindo a função que quero contar / o tempo de contagem
+    // lembrando que: não adinata chamar a função que printa o objeto, se eu não alterar as coordenadas - printa sobreposto - criar um looping pra ir alterando os valores
+    // chamar a função sem o (), se não ela é executada, sem esperar o timer
+    var x = 20 // onde começa a bolinha
+    function atualizaTela() {
+
+        limpaTela();  // preciso apagar o que foi printado na primeira rodada da função
+        desenhaCirculo(x, 20, 10);  // a coordenada precisa receber um novo valor
+        x++; // incremento
+    }
+
+    setInterval(atualizaTela, 10);  // função que recebe dois parâmetros // ajusta a velocida que a função é printada
+
+    //Quando queremos passar uma função como parâmetro para outra, precisamos omitir seus parênteses (), chamamos
+    // isso de callback em programação
+
+</script>

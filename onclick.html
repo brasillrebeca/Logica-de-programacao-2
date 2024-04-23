@@ -1,0 +1,29 @@
+<canvas width="600" heigt="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'grey';
+    pincel.fillRect(0, 0, 600, 400);
+
+    // quem passa o parâmetro de evento é o navegador, quando clico no canvas
+    function desenhaCirculo(evento) {
+
+        // capturar as coordenadas que o navegador usou
+        // lembrando que ele pega as coordenadas da tela inteira e não do canvas que delimitei, por isso preciso subrair os valores para ajustar a coordenada
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+        // invés de alerta, quero exibir uma bolinha onde eu clicar
+        /* alert(x + ',' + y); */
+        pincel.fillStyle = 'blue';
+        pincel.beginPath();
+        pincel.arc(x, y, 10, 0, 2 * 3.14);
+        pincel.fill();
+
+    }
+
+    tela.onclick = desenhaCirculo;
+
+</script>

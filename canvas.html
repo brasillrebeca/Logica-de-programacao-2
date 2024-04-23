@@ -1,0 +1,32 @@
+<canvas width = "600" height = "400"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas'); // document sabe me retornar a variável
+    var pincel = tela.getContext('2d');  // atributo pincel
+
+    // essas funções (getContext, fillStyle, lineTo..) são chamadas de API - fazem parte da biblioteca da linguagem - consultar documentação para cada linguagem
+    pincel.fillStyle = 'lightgrey';   // precisa vir antes da instrução pra construir um quadro // o atributo pincel aceita receber valor
+    pincel.fillRect(0, 0, 600, 400); // fillRect é um método // fornecer coordenadas para o pincel e tamanho da tela
+
+    pincel.fillStyle = 'green';
+    pincel.fillRect(0, 0, 200, 400);
+
+    pincel.fillStyle = 'red';
+    pincel.fillRect(400, 0, 200, 400);
+
+    // desenhar caminhos - constroi um trinângulo
+    pincel.fillStyle = 'yellow';
+    pincel.beginPath();
+    pincel.moveTo(300, 200);
+    pincel.lineTo(200, 400);
+    pincel.lineTo(400, 400);
+    pincel.fill();
+
+    // círculo
+    pincel.fillStyle = 'blue';
+    pincel.beginPath();
+    pincel.arc(300, 200, 50, 0, 2 * 3.14);
+    pincel.fill();
+
+</script>
